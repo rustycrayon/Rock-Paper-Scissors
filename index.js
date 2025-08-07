@@ -13,59 +13,62 @@ function getComputerChoice() {
     }
 }
 
-function getHumanChoice() {
+function getHumanChoice() { // Calling this function prompts the dialogue box 
     result = prompt("Rock, paper, scissors, go!").toLowerCase();
     return result
 }
 
-let humanScore = 0;
-let computerScore = 0;
+function playGame() {
 
-function playRound(humanChoice, computerChoice) { // Do I add getHumanChoice() to this function? What do I do to refresh the prompt?
-    if (humanChoice === computerChoice) {
-        console.log(humanChoice, computerChoice)
-        console.log(humanScore, computerScore)
-        console.log("Tie! Try again")
-    }
-    else if (humanChoice === "rock" && computerChoice === "paper") {
-        console.log(humanChoice, computerChoice)
-        console.log(humanScore, computerScore)
-        console.log("You lose! Paper beats rock!")
-        return ++computerScore 
-    }
-    else if (humanChoice === "paper" && computerChoice === "scissors"){
-        console.log(humanChoice, computerChoice)
-        console.log(humanScore, computerScore)
-        console.log("You lose! Scissors beats paper!")
-        return ++computerScore  
-    }
-    else if (humanChoice === "scissors" && computerChoice === "rock") {
-        console.log(humanChoice, computerChoice)
-        console.log(humanScore, computerScore)
-        console.log("You lose! Scissors beats paper!")
-        return ++computerScore  
-    }
-    else if (humanChoice === "rock" && computerChoice === "scissors") {
-        console.log(humanChoice, computerChoice)
-        console.log(humanScore, computerScore)
-        console.log("You win! Rock beats scissors!")
-        return ++humanScore 
-    }
-    else if  (humanChoice === "paper" && computerChoice === "rock") {
-        console.log(humanChoice, computerChoice)
-        console.log(humanScore, computerScore)
-        console.log("You win! Paper beats rock!")
-        return ++humanScore 
-            }
-    else if (humanChoice === "scissors" && computerChoice === "paper") {
-        console.log(humanChoice, computerChoice)
-        console.log(humanScore, computerScore)
-        console.log("You win! Scissors beats paper!")
-        return ++humanScore 
-            }
+    let humanScore = 0;
+    let computerScore = 0;
+
+    const humanSelection = getHumanChoice();
+    const computerSelection = getComputerChoice();
+
+    function playRound(humanChoice, computerChoice) { // Do I add getHumanChoice() to this function? What do I do to refresh the prompt?
+        
+        if (humanChoice === computerChoice) {
+            console.log("Player:", humanChoice, "Computer:", computerChoice)
+            console.log("Tie! Try again")
+            console.log(humanScore, computerScore)
         }
+        else if (humanChoice === "rock" && computerChoice === "paper") {
+            console.log("Player:", humanChoice, "Computer:", computerChoice)
+            console.log("You lose! Paper beats rock!")
+            console.log(humanScore, ++computerScore)
+             
+        }
+        else if (humanChoice === "paper" && computerChoice === "scissors"){
+            console.log("Player:", humanChoice, "Computer:", computerChoice)
+            console.log("You lose! Scissors beats paper!")
+            console.log(humanScore, ++computerScore)
+              
+        }
+        else if (humanChoice === "scissors" && computerChoice === "rock") {
+            console.log("Player:", humanChoice, "Computer:", computerChoice)
+            console.log("You lose! Rock beats scissors!")
+            console.log(humanScore, ++computerScore)
+              
+        }
+        else if (humanChoice === "rock" && computerChoice === "scissors") {
+            console.log("Player:", humanChoice, "Computer:", computerChoice)
+            console.log("You win! Rock beats scissors!")
+            console.log(++humanScore, computerScore)
+             
+        }
+        else if  (humanChoice === "paper" && computerChoice === "rock") {
+            console.log("Player:", humanChoice, "Computer:", computerChoice)
+            console.log("You win! Paper beats rock!")
+            console.log(++humanScore, computerScore)
+             
+                }
+        else if (humanChoice === "scissors" && computerChoice === "paper") {
+            console.log("Player:", humanChoice, "Computer:", computerChoice)
+            console.log("You win! Scissors beats paper!")
+            console.log(++humanScore, computerScore)
+                } 
+    }
 
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
-
-playRound(humanSelection, computerSelection);
+    return playRound(humanSelection, computerSelection);
+}
